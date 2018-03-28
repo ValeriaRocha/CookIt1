@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BA59168206C1DDC00E553D5 /* VCtrllerDetalleReceta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA59167206C1DDC00E553D5 /* VCtrllerDetalleReceta.swift */; };
 		3BFC93C1206AF51100D364CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC93C0206AF51100D364CD /* AppDelegate.swift */; };
 		3BFC93C6206AF51100D364CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC93C4206AF51100D364CD /* Main.storyboard */; };
 		3BFC93C8206AF51100D364CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC93C7206AF51100D364CD /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3BA59167206C1DDC00E553D5 /* VCtrllerDetalleReceta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCtrllerDetalleReceta.swift; sourceTree = "<group>"; };
 		3BFC93BD206AF51100D364CD /* CookIt1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookIt1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BFC93C0206AF51100D364CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BFC93C5206AF51100D364CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			children = (
 				3BFC93C0206AF51100D364CD /* AppDelegate.swift */,
 				3BFC93C4206AF51100D364CD /* Main.storyboard */,
+				3BA59167206C1DDC00E553D5 /* VCtrllerDetalleReceta.swift */,
 				3BFC93E2206B274700D364CD /* TableViewCellReceta.swift */,
 				3BFC93E0206B20A700D364CD /* TableViewControllerRecetas.swift */,
 				3BFC93DE206B105900D364CD /* ListaRecetas.swift */,
@@ -162,6 +165,7 @@
 				3BFC93E1206B20A700D364CD /* TableViewControllerRecetas.swift in Sources */,
 				3BFC93E3206B274700D364CD /* TableViewCellReceta.swift in Sources */,
 				3BFC93D7206AFF7800D364CD /* Opinion.swift in Sources */,
+				3BA59168206C1DDC00E553D5 /* VCtrllerDetalleReceta.swift in Sources */,
 				3BFC93C1206AF51100D364CD /* AppDelegate.swift in Sources */,
 				3BFC93D5206AFA1800D364CD /* Ingrediente.swift in Sources */,
 				3BFC93D3206AFA0500D364CD /* Receta.swift in Sources */,

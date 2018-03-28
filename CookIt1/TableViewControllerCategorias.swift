@@ -35,10 +35,11 @@ class TableViewControllerCategorias: UITableViewController {
         ingredientes.append(ingrediente)
         var opinion = Opinion(ranking: 5, comentario: "Excelente receta")
         opiniones.append(opinion)
-        var receta = Receta(nombre: "Pollo con Espinaca", dificultad: "Media", duracion: 60, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 100, nutricion: info, url: "https://www.youtube.com/watch?v=jNalUWQrW7E", imagen: #imageLiteral(resourceName: "pollo"), rank: -1)
+        var receta = Receta(nombre: "Pollo con Espinaca", dificultad: "Media", duracion: 60, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 100, nutricion: info, url: "jNalUWQrW7E&t=1s", imagen: #imageLiteral(resourceName: "pollo"), rank: -1, instrucciones: "1. Descongelar el pollo\n2. Cortar Espinaca\n")
         recetas.append(receta)
         
-        
+        ingredientes.removeAll()
+        opiniones.removeAll()
         info = InfoNutrimental(calorias: 150, gluten: false)
         ingrediente = Ingrediente(nombre: "Platano", cantidad: 2, unidad: "Unidades", sugerencia: nil)
         ingredientes.append(ingrediente)
@@ -46,9 +47,11 @@ class TableViewControllerCategorias: UITableViewController {
         ingredientes.append(ingrediente)
         opinion = Opinion(ranking: 9, comentario: "Delicioso")
         opiniones.append(opinion)
-        receta = Receta(nombre: "Malteada de Platano", dificultad: "Baja", duracion: 10, categoria: "Bebidas", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "https://www.youtube.com/watch?v=jNalUWQrW7E", imagen: #imageLiteral(resourceName: "malteada"), rank: -1)
+        receta = Receta(nombre: "Malteada de Platano", dificultad: "Baja", duracion: 10, categoria: "Bebidas", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "WE8HqGtPUIo", imagen: #imageLiteral(resourceName: "malteada"), rank: -1, instrucciones: "1.En la licuadora agregamos el plátano, el extracto de vainilla, el chocolate en polvo y por último la leche.\n2. Licuamos hasta ver todo incorporado y listo!")
         recetas.append(receta)
         
+        ingredientes.removeAll()
+        opiniones.removeAll()
         info = InfoNutrimental(calorias: 150, gluten: false)
         ingrediente = Ingrediente(nombre: "Nuez", cantidad: 100, unidad: "Gramos", sugerencia: nil)
         ingredientes.append(ingrediente)
@@ -56,9 +59,11 @@ class TableViewControllerCategorias: UITableViewController {
         ingredientes.append(ingrediente)
         opinion = Opinion(ranking: 9, comentario: "Yum!")
         opiniones.append(opinion)
-        receta = Receta(nombre: "Brownies", dificultad: "Baja", duracion: 50, categoria: "Postres", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "https://www.youtube.com/watch?v=jNalUWQrW7E", imagen: #imageLiteral(resourceName: "brownies"), rank: -1)
+        receta = Receta(nombre: "Brownies", dificultad: "Baja", duracion: 50, categoria: "Postres", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "lIb_741_dIw", imagen: #imageLiteral(resourceName: "brownies"), rank: -1, instrucciones: "1.Vertir agua y aceite en un contenedor\n2. Añadir los huevos\n3.Revolver mezcla durante 1 min\n")
         recetas.append(receta)
         
+        ingredientes.removeAll()
+        opiniones.removeAll()
         info = InfoNutrimental(calorias: 150, gluten: false)
         ingrediente = Ingrediente(nombre: "Pato", cantidad: 100, unidad: "Gramos", sugerencia: nil)
         ingredientes.append(ingrediente)
@@ -66,7 +71,7 @@ class TableViewControllerCategorias: UITableViewController {
         ingredientes.append(ingrediente)
         opinion = Opinion(ranking: 9, comentario: "Sabroso")
         opiniones.append(opinion)
-        receta = Receta(nombre: "Pato a la Naranja", dificultad: "Alta", duracion: 50, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "https://www.youtube.com/watch?v=jNalUWQrW7E", imagen: #imageLiteral(resourceName: "patoNaranja"), rank: -1)
+        receta = Receta(nombre: "Pato a la Naranja", dificultad: "Alta", duracion: 50, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "boSY78CrMCY", imagen: #imageLiteral(resourceName: "patoNaranja"), rank: -1, instrucciones: "1.Vertir agua y aceite en un contenedor\n2. Añadir los huevos\n3.Revolver mezcla durante 1 min\n")
         recetas.append(receta)
         
         listaRecetas = ListaRecetas(recetas: recetas)

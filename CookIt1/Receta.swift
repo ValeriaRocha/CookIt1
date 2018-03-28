@@ -21,8 +21,9 @@ class Receta: NSObject {
     var url : String
     var imagen : UIImage
     var rank : Double
+    var instrucciones : String
     
-    init(nombre : String, dificultad : String, duracion : Double, categoria : String, ingredientes : [Ingrediente], opiniones : [Opinion], precio : Double, nutricion : InfoNutrimental, url : String, imagen : UIImage, rank : Double){
+    init(nombre : String, dificultad : String, duracion : Double, categoria : String, ingredientes : [Ingrediente], opiniones : [Opinion], precio : Double, nutricion : InfoNutrimental, url : String, imagen : UIImage, rank : Double, instrucciones : String){
         self.nombre = nombre
         self.dificultad = dificultad
         self.duracion = duracion
@@ -34,6 +35,7 @@ class Receta: NSObject {
         self.url = url
         self.imagen = imagen
         self.rank = rank
+        self.instrucciones = instrucciones
     }
     
     func updateRank() -> Void{
