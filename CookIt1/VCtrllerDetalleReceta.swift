@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import Social
 
 class VCtrllerDetalleReceta: UIViewController, WKUIDelegate {
     
@@ -71,6 +72,17 @@ class VCtrllerDetalleReceta: UIViewController, WKUIDelegate {
     }
     
 
+    @IBAction func share(_ sender: UIButton) {
+        
+        //let share = [receta.imagen] as [Any]
+        let liga = "Mira esta receta de Instant Chef: https://www.youtube.com/watch?v=" + receta.url
+        let share = [liga]
+        let activityViewController = UIActivityViewController(activityItems: share, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+        
+    }
+    
 
     /*
     // MARK: - Navigation
