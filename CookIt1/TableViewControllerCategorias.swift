@@ -35,7 +35,7 @@ class TableViewControllerCategorias: UITableViewController {
         ingredientes.append(ingrediente)
         var opinion = Opinion(ranking: 5, comentario: "Excelente receta")
         opiniones.append(opinion)
-        var receta = Receta(nombre: "Pollo con Espinaca", dificultad: "Media", duracion: 60, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 100, nutricion: info, url: "https://www.youtube.com/watch?v=jNalUWQrW7E", imagen: #imageLiteral(resourceName: "pollo"))
+        var receta = Receta(nombre: "Pollo con Espinaca", dificultad: "Media", duracion: 60, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 100, nutricion: info, url: "https://www.youtube.com/watch?v=jNalUWQrW7E", imagen: #imageLiteral(resourceName: "pollo"), rank: -1)
         recetas.append(receta)
         
         
@@ -46,7 +46,7 @@ class TableViewControllerCategorias: UITableViewController {
         ingredientes.append(ingrediente)
         opinion = Opinion(ranking: 9, comentario: "Delicioso")
         opiniones.append(opinion)
-        receta = Receta(nombre: "Malteada de Platano", dificultad: "Baja", duracion: 10, categoria: "Bebidas", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "https://www.youtube.com/watch?v=jNalUWQrW7E", imagen: #imageLiteral(resourceName: "malteada"))
+        receta = Receta(nombre: "Malteada de Platano", dificultad: "Baja", duracion: 10, categoria: "Bebidas", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "https://www.youtube.com/watch?v=jNalUWQrW7E", imagen: #imageLiteral(resourceName: "malteada"), rank: -1)
         recetas.append(receta)
         
         info = InfoNutrimental(calorias: 150, gluten: false)
@@ -56,7 +56,7 @@ class TableViewControllerCategorias: UITableViewController {
         ingredientes.append(ingrediente)
         opinion = Opinion(ranking: 9, comentario: "Yum!")
         opiniones.append(opinion)
-        receta = Receta(nombre: "Brownies", dificultad: "Baja", duracion: 50, categoria: "Postres", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "https://www.youtube.com/watch?v=jNalUWQrW7E", imagen: #imageLiteral(resourceName: "brownies"))
+        receta = Receta(nombre: "Brownies", dificultad: "Baja", duracion: 50, categoria: "Postres", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "https://www.youtube.com/watch?v=jNalUWQrW7E", imagen: #imageLiteral(resourceName: "brownies"), rank: -1)
         recetas.append(receta)
         
         info = InfoNutrimental(calorias: 150, gluten: false)
@@ -66,7 +66,7 @@ class TableViewControllerCategorias: UITableViewController {
         ingredientes.append(ingrediente)
         opinion = Opinion(ranking: 9, comentario: "Sabroso")
         opiniones.append(opinion)
-        receta = Receta(nombre: "Pato a la Naranja", dificultad: "Alta", duracion: 50, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "https://www.youtube.com/watch?v=jNalUWQrW7E", imagen: #imageLiteral(resourceName: "patoNaranja"))
+        receta = Receta(nombre: "Pato a la Naranja", dificultad: "Alta", duracion: 50, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "https://www.youtube.com/watch?v=jNalUWQrW7E", imagen: #imageLiteral(resourceName: "patoNaranja"), rank: -1)
         recetas.append(receta)
         
         listaRecetas = ListaRecetas(recetas: recetas)
@@ -98,8 +98,7 @@ class TableViewControllerCategorias: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celda", for: indexPath)
-
-        cell.textLabel?.text = categorias[indexPath.row]
+       cell.textLabel?.text = categorias[indexPath.row]
         
         return cell
     }

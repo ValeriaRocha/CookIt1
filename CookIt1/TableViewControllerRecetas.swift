@@ -23,7 +23,7 @@ class TableViewControllerRecetas: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         title = category
-        
+        recetas.sort(by: { $0.rank > $1.rank})
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,7 +50,8 @@ class TableViewControllerRecetas: UITableViewController {
         cell.imagen.image = recetas[indexPath.row].imagen
         cell.lbNombre.text = recetas[indexPath.row].nombre
         cell.lbCalorias.text = "Calorias: " + String(recetas[indexPath.row].nutricion.calorias)
-        cell.lbRank.text = String(recetas[indexPath.row].getRank())
+        recetas[indexPath.row].updateRank()
+        cell.lbRank.text = String(describing: recetas[indexPath.row].rank)
         cell.lbDuracion.text = String(recetas[indexPath.row].duracion)
         cell.lbDificultad.text = "Dificultad: " + recetas[indexPath.row].dificultad
 
