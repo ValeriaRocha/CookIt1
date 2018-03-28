@@ -8,20 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		3BFC93C1206AF51100D364CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC93C0206AF51100D364CD /* AppDelegate.swift */; };
-		3BFC93C3206AF51100D364CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC93C2206AF51100D364CD /* ViewController.swift */; };
 		3BFC93C6206AF51100D364CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC93C4206AF51100D364CD /* Main.storyboard */; };
 		3BFC93C8206AF51100D364CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC93C7206AF51100D364CD /* Assets.xcassets */; };
 		3BFC93CB206AF51100D364CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC93C9206AF51100D364CD /* LaunchScreen.storyboard */; };
+		3BFC93D3206AFA0500D364CD /* Receta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC93D2206AFA0500D364CD /* Receta.swift */; };
+		3BFC93D5206AFA1800D364CD /* Ingrediente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC93D4206AFA1800D364CD /* Ingrediente.swift */; };
+		3BFC93D7206AFF7800D364CD /* Opinion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC93D6206AFF7800D364CD /* Opinion.swift */; };
+		3BFC93D9206B012B00D364CD /* InfoNutrimental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC93D8206B012B00D364CD /* InfoNutrimental.swift */; };
+		3BFC93DD206B101500D364CD /* TableViewControllerCategorias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC93DC206B101500D364CD /* TableViewControllerCategorias.swift */; };
+		3BFC93DF206B105900D364CD /* ListaRecetas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC93DE206B105900D364CD /* ListaRecetas.swift */; };
+		3BFC93E1206B20A700D364CD /* TableViewControllerRecetas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC93E0206B20A700D364CD /* TableViewControllerRecetas.swift */; };
+		3BFC93E3206B274700D364CD /* TableViewCellReceta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC93E2206B274700D364CD /* TableViewCellReceta.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3BFC93BD206AF51100D364CD /* CookIt1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookIt1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BFC93C0206AF51100D364CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3BFC93C2206AF51100D364CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3BFC93C5206AF51100D364CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3BFC93C7206AF51100D364CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BFC93CA206AF51100D364CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BFC93CC206AF51100D364CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BFC93D2206AFA0500D364CD /* Receta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receta.swift; sourceTree = "<group>"; };
+		3BFC93D4206AFA1800D364CD /* Ingrediente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingrediente.swift; sourceTree = "<group>"; };
+		3BFC93D6206AFF7800D364CD /* Opinion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opinion.swift; sourceTree = "<group>"; };
+		3BFC93D8206B012B00D364CD /* InfoNutrimental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoNutrimental.swift; sourceTree = "<group>"; };
+		3BFC93DC206B101500D364CD /* TableViewControllerCategorias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerCategorias.swift; sourceTree = "<group>"; };
+		3BFC93DE206B105900D364CD /* ListaRecetas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaRecetas.swift; sourceTree = "<group>"; };
+		3BFC93E0206B20A700D364CD /* TableViewControllerRecetas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerRecetas.swift; sourceTree = "<group>"; };
+		3BFC93E2206B274700D364CD /* TableViewCellReceta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellReceta.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +69,15 @@
 			isa = PBXGroup;
 			children = (
 				3BFC93C0206AF51100D364CD /* AppDelegate.swift */,
-				3BFC93C2206AF51100D364CD /* ViewController.swift */,
 				3BFC93C4206AF51100D364CD /* Main.storyboard */,
+				3BFC93E2206B274700D364CD /* TableViewCellReceta.swift */,
+				3BFC93E0206B20A700D364CD /* TableViewControllerRecetas.swift */,
+				3BFC93DE206B105900D364CD /* ListaRecetas.swift */,
+				3BFC93DC206B101500D364CD /* TableViewControllerCategorias.swift */,
+				3BFC93D2206AFA0500D364CD /* Receta.swift */,
+				3BFC93D8206B012B00D364CD /* InfoNutrimental.swift */,
+				3BFC93D6206AFF7800D364CD /* Opinion.swift */,
+				3BFC93D4206AFA1800D364CD /* Ingrediente.swift */,
 				3BFC93C7206AF51100D364CD /* Assets.xcassets */,
 				3BFC93C9206AF51100D364CD /* LaunchScreen.storyboard */,
 				3BFC93CC206AF51100D364CD /* Info.plist */,
@@ -136,8 +157,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BFC93C3206AF51100D364CD /* ViewController.swift in Sources */,
+				3BFC93DF206B105900D364CD /* ListaRecetas.swift in Sources */,
+				3BFC93DD206B101500D364CD /* TableViewControllerCategorias.swift in Sources */,
+				3BFC93E1206B20A700D364CD /* TableViewControllerRecetas.swift in Sources */,
+				3BFC93E3206B274700D364CD /* TableViewCellReceta.swift in Sources */,
+				3BFC93D7206AFF7800D364CD /* Opinion.swift in Sources */,
 				3BFC93C1206AF51100D364CD /* AppDelegate.swift in Sources */,
+				3BFC93D5206AFA1800D364CD /* Ingrediente.swift in Sources */,
+				3BFC93D3206AFA0500D364CD /* Receta.swift in Sources */,
+				3BFC93D9206B012B00D364CD /* InfoNutrimental.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
