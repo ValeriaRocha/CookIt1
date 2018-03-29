@@ -49,3 +49,7 @@ class Receta: NSObject {
     }
     
 }
+
+//gluten free: segmented control
+//categorias con table View?
+// dificultad con table view? 

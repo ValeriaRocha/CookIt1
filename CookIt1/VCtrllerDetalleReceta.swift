@@ -15,6 +15,7 @@ class VCtrllerDetalleReceta: UIViewController, WKUIDelegate {
     @IBOutlet weak var web: WKWebView!
     var receta : Receta!
     
+    
     @IBOutlet weak var lbNombre: UILabel!
     @IBOutlet weak var lbDuracion: UILabel!
     @IBOutlet weak var lbRank: UILabel!
@@ -30,6 +31,8 @@ class VCtrllerDetalleReceta: UIViewController, WKUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = receta.nombre
         
         let video = "https://www.youtube.com/embed/\(receta.url)"
         let myURL = URL(string: video)
