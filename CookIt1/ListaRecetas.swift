@@ -10,6 +10,9 @@ import UIKit
 
 class ListaRecetas: NSObject {
 
+        //singleton
+    static var baseRecetas = ListaRecetas()
+    
     var recetas : [Receta]
     
     init(recetas : [Receta]){
