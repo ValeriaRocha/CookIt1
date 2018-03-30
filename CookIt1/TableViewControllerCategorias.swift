@@ -74,8 +74,11 @@ class TableViewControllerCategorias: UITableViewController {
         receta = Receta(nombre: "Pato a la Naranja", dificultad: "Alta", duracion: 50, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "boSY78CrMCY", imagen: #imageLiteral(resourceName: "patoNaranja"), rank: -1, instrucciones: "1.Vertir agua y aceite en un contenedor\n2. Añadir los huevos\n3.Revolver mezcla durante 1 min\n")
         recetas.append(receta)
         
-        listaRecetas = ListaRecetas(recetas: recetas)
-        categorias = listaRecetas.getCategorias()
+        //listaRecetas = ListaRecetas(recetas: recetas)
+        ListaRecetas.baseRecetas.recetas = recetas
+       // categorias = listaRecetas.getCategorias()
+        
+        categorias = ListaRecetas.baseRecetas.getCategorias()
         
         for i in 0 ... (categorias.count - 1){
             print(categorias[i])
@@ -151,7 +154,8 @@ class TableViewControllerCategorias: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vista = segue.destination as! TableViewControllerRecetas
         let index = tableView.indexPathForSelectedRow!
-        let rec = listaRecetas.getRecetas(forCategoria: categorias[index.row])
+        //let rec = listaRecetas.getRecetas(forCategoria: categorias[index.row])
+        let rec = ListaRecetas.baseRecetas.getRecetas(forCategoria: categorias[index.row])
         vista.category = categorias[index.row]
         vista.recetas = rec
     }
