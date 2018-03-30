@@ -41,19 +41,21 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
     var ingSelect = [String]()
     var buscandoIng : Bool!
     
-    
     var noIngFilter = [String]()
     var noIngSelect = [String]()
     var buscandoNoIng : Bool!
     var listaOrdenar = ["Calorias", "Duracion", "Precio"]
     var nacionalidades = [String]()
     
+    //table View solitario no tiene amigos
     @IBOutlet weak var tableViewIngredientes: UITableView!
     
     //search bars
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchBarNoIng: UISearchBar!
     
+    //lista de todas las recetas
+    var recetas = [Receta]()
     
     
     override func viewDidLoad() {
@@ -81,7 +83,7 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         searchBarNoIng.returnKeyType = UIReturnKeyType.done
         searchBarNoIng.placeholder = "Buscar Ingredientes"
         
-        
+        recetas = ListaRecetas.baseRecetas.recetas
     
         buscandoIng = false
         buscandoNoIng = false
@@ -289,29 +291,36 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
         
+        var categoriasSelect = [String]()
         if let indices = tableViewCategorias.indexPathsForSelectedRows{
             for i in 0 ..< indices.count{
-                print(categorias[indices[i].row])
+                categoriasSelect.append(categorias[indices[i].row])
             }
+        } else {
+            categoriasSelect = categorias
         }
         
         print("Ingredientes seleccionados")
         for i in 0 ..< ingSelect.count{
             print(ingSelect[i])
         }
+
+        recetas = recetas.filter({categoriasSelect.contains($0.categoria)})
+        
+
     }
     
     
     
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let vista = segue.destination as! TableViewControllerRecetas
+        vista.recetas = recetas
     }
-    */
+
 
 }
