@@ -46,6 +46,7 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
     var noIngSelect = [String]()
     var buscandoNoIng : Bool!
     var listaOrdenar = ["Calorias", "Duracion", "Precio"]
+    var nacionalidades = [String]()
     
     @IBOutlet weak var tableViewIngredientes: UITableView!
     
@@ -60,7 +61,8 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         
         categorias = ListaRecetas.baseRecetas.getCategorias()
         ing = ListaRecetas.baseRecetas.getStringsAllIngredients()
-        caractNutricion = ["Sin Gluten", "Sin Lactosa", "Vegetariana", "Vegana", "Fuente de fibra", "Alto en Carbohidratos", "Bajo en Carbohidratos", "Alto en Proteinas"]
+        caractNutricion = ["Sin Gluten", "Sin Lactosa", "Vegetariana", "Vegana", "Fuente de fibra", "Alto en Carbohidratos", "Bajo en Carbohidratos", "Alto en Proteinas", "Aceptable para Diabeticos"]
+        nacionalidades = ListaRecetas.baseRecetas.getNacionalidades()
         
         title = "Busqueda avanzada"
 
@@ -120,6 +122,9 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         if tableView == self.tableViewOrdenar{
             return listaOrdenar.count
         }
+        if tableView == self.tableViewNacionalidad{
+            return nacionalidades.count
+        }
         
         return 0
         
@@ -133,6 +138,9 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         }
         if tableView == self.tableViewNutricion{
             cell.textLabel?.text = caractNutricion[indexPath.row]
+        }
+        if tableView == self.tableViewNacionalidad{
+            cell.textLabel?.text = nacionalidades[indexPath.row]
         }
         if tableView == self.tableViewOrdenar{
             cell.textLabel?.text = listaOrdenar[indexPath.row]
