@@ -13,6 +13,9 @@ class ListaRecetas: NSObject {
     //singleton para
     static var baseRecetas = ListaRecetas()
 
+        //singleton
+    static var baseRecetas = ListaRecetas()
+    
     var recetas : [Receta]
     
     init(recetas : [Receta]){
