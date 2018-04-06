@@ -10,10 +10,9 @@ import UIKit
 
 class ListaRecetas: NSObject {
     
+    //hola
+    //skdfkhjgskd
     //singleton para
-    static var baseRecetas = ListaRecetas()
-
-        //singleton
     static var baseRecetas = ListaRecetas()
     
     var recetas : [Receta]
@@ -61,6 +60,7 @@ class ListaRecetas: NSObject {
         }
         
         return nac
+        print("hola")
         
     }
     
