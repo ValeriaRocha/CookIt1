@@ -86,6 +86,13 @@ class VCtrllerDetalleReceta: UIViewController, WKUIDelegate {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        print("will disappear")
+        web.stopLoading()
+    }
+    
 
     /*
     // MARK: - Navigation

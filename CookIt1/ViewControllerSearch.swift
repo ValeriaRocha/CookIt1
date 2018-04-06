@@ -285,12 +285,24 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
     //  MARK: - Procesamiento
     @IBAction func click(_ sender: UIButton) {
         
-        if let indices = tableView.indexPathsForSelectedRows{
-            for i in 0 ..< indices.count{
-                print(nivel[indices[i].row])
-            }
+
+        print("Ingredientes seleccionados")
+        for i in 0 ..< ingSelect.count{
+            print(ingSelect[i])
         }
         
+        //filtrar en base a dificultad
+        var selectedLevels = [String]()
+        if let indices = tableView.indexPathsForSelectedRows{
+            for i in 0 ..< indices.count{
+                selectedLevels.append(nivel[indices[i].row])
+            }
+        } else {
+            selectedLevels = nivel
+        }
+        recetas = recetas.filter({selectedLevels.contains($0.dificultad)})
+
+        //filtar en base a categorias
         var categoriasSelect = [String]()
         if let indices = tableViewCategorias.indexPathsForSelectedRows{
             for i in 0 ..< indices.count{
@@ -299,15 +311,17 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             categoriasSelect = categorias
         }
-        
-        print("Ingredientes seleccionados")
-        for i in 0 ..< ingSelect.count{
-            print(ingSelect[i])
-        }
-
         recetas = recetas.filter({categoriasSelect.contains($0.categoria)})
         
 
+    }
+    
+    func getSelected(forIndices : [IndexPath], forArray : [String]){
+        
+        var selected = [String]()
+        for i in 0 ..< forIndices.count{
+            selected.append(forArray[forIndices[i].row])
+        }
     }
     
     

@@ -9,6 +9,9 @@
 import UIKit
 
 class ListaRecetas: NSObject {
+    
+    //singleton para
+    static var baseRecetas = ListaRecetas()
 
     var recetas : [Receta]
     
@@ -16,9 +19,14 @@ class ListaRecetas: NSObject {
         self.recetas = recetas
     }
     
+    override init(){
+        let receta = [Receta]()
+        recetas = receta
+    }
+    
     func getCategorias() -> [String]{
         var categorias = [String]()
-        for i in 0 ... (recetas.count - 1){
+        for i in 0 ..< recetas.count {
             if !categorias.contains(recetas[i].categoria){
                 categorias.append(recetas[i].categoria)
             }
@@ -36,6 +44,38 @@ class ListaRecetas: NSObject {
             }
         }
         return lista
+    }
+    
+    func getNacionalidades() -> [String]{
+        var nac = [String]()
+        
+        for i in 0 ..< recetas.count {
+            if let nacionalidad = recetas[i].nacionalidad{
+                if !nac.contains(nacionalidad){
+                    nac.append(nacionalidad)
+                }
+            }
+        }
+        
+        return nac
+        
+    }
+    
+    func getStringsAllIngredients() -> [String] {
+        
+        var ingredientes = [String]()
+        
+        for i in 0 ..< recetas.count {
+            for x in 0 ..< recetas[i].ingredientes.count{
+                if !ingredientes.contains(recetas[i].ingredientes[x].nombre){
+                    ingredientes.append(recetas[i].ingredientes[x].nombre)
+                }
+            }
+        }
+        
+        ingredientes.sort()
+        
+        return ingredientes
     }
     
 }
