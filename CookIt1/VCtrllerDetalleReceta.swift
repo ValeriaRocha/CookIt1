@@ -10,11 +10,12 @@ import UIKit
 import WebKit
 import Social
 
-class VCtrllerDetalleReceta: UIViewController, WKUIDelegate {
+class VCtrllerDetalleReceta: UIViewController, WKUIDelegate, WKNavigationDelegate {
     
     @IBOutlet weak var web: WKWebView!
     var receta : Receta!
     
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     
     @IBOutlet weak var lbNombre: UILabel!
     @IBOutlet weak var lbDuracion: UILabel!
@@ -38,6 +39,12 @@ class VCtrllerDetalleReceta: UIViewController, WKUIDelegate {
         let myURL = URL(string: video)
         let myRequest = URLRequest(url: myURL!)
         web.load(myRequest)
+        
+        
+        self.web.addSubview(self.activity)
+        self.activity.startAnimating()
+        self.web.navigationDelegate = self
+        self.activity.hidesWhenStopped = true
         
         lbNombre.text = receta.nombre
         lbDuracion.text = String(receta.duracion)
@@ -74,7 +81,14 @@ class VCtrllerDetalleReceta: UIViewController, WKUIDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("termino")
+        activity.stopAnimating()
+    }
 
+   
+    
+    
     @IBAction func share(_ sender: UIButton) {
         
         //let share = [receta.imagen] as [Any]

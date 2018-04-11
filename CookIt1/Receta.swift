@@ -24,7 +24,7 @@ class Receta: NSObject {
     var instrucciones : String
     var nacionalidad : String?
     
-    init(nombre : String, dificultad : String, duracion : Double, categoria : String, ingredientes : [Ingrediente], opiniones : [Opinion], precio : Double, nutricion : InfoNutrimental, url : String, imagen : UIImage, rank : Double, instrucciones : String, nacionalidad : String?){
+    init(nombre : String, dificultad : String, duracion : Double, categoria : String, ingredientes : [Ingrediente], opiniones : [Opinion], precio : Double, nutricion : InfoNutrimental, url : String, imagen : UIImage, rank : Double, instrucciones : String, nacionalidad : String){
         self.nombre = nombre
         self.dificultad = dificultad
         self.duracion = duracion

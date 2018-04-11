@@ -73,7 +73,7 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         tableViewIngredientes.allowsMultipleSelection = true
         tableViewNoIng.allowsMultipleSelection = true
         tableViewNutricion.allowsMultipleSelection = true
-
+        tableViewNacionalidad.allowsMultipleSelection = true
 
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
@@ -285,6 +285,7 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
     //  MARK: - Procesamiento
     @IBAction func click(_ sender: UIButton) {
         
+        recetas = ListaRecetas.baseRecetas.recetas
 
         print("Ingredientes seleccionados")
         for i in 0 ..< ingSelect.count{
@@ -294,9 +295,7 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         //filtrar en base a dificultad
         var selectedLevels = [String]()
         if let indices = tableView.indexPathsForSelectedRows{
-            for i in 0 ..< indices.count{
-                selectedLevels.append(nivel[indices[i].row])
-            }
+            selectedLevels = getSelected(forIndices: indices, forArray: nivel)
         } else {
             selectedLevels = nivel
         }
@@ -305,23 +304,72 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         //filtar en base a categorias
         var categoriasSelect = [String]()
         if let indices = tableViewCategorias.indexPathsForSelectedRows{
-            for i in 0 ..< indices.count{
-                categoriasSelect.append(categorias[indices[i].row])
-            }
+            categoriasSelect = getSelected(forIndices: indices, forArray: categorias)
         } else {
             categoriasSelect = categorias
         }
         recetas = recetas.filter({categoriasSelect.contains($0.categoria)})
         
+        //filtar en base a nacionalidad
+        var nacioSelect = [String]()
+        if let indices = tableViewNacionalidad.indexPathsForSelectedRows{
+            nacioSelect = getSelected(forIndices: indices, forArray: nacionalidades)
+        } else {
+            nacioSelect = nacionalidades
+        }
+        recetas = recetas.filter({nacioSelect.contains($0.nacionalidad!)})
+        
+        for i in 0..<recetas.count{
+            print(recetas[i].nombre)
+        }
+        //filtar en base a duracion
+        if let duracion = Double(tfDuracion.text!){
+             recetas = recetas.filter({$0.duracion <= duracion})
+        }
+        
+        print("duracion")
+        for i in 0..<recetas.count{
+            print(recetas[i].nombre)
+        }
+        
+        //filtar en base a precio
+        if let precio = Double(tfPrecio.text!){
+            recetas = recetas.filter({$0.precio <= precio})
+        }
+        
+        print("precio")
 
+        for i in 0..<recetas.count{
+            print(recetas[i].nombre)
+        }
+        
+        //filtar en base a ranking
+        if let rank = Double(tfRanking.text!){
+            recetas = recetas.filter({$0.rank >= rank})
+        }
+        
+        print("ranking")
+
+        for i in 0..<recetas.count{
+            print(recetas[i].nombre)
+        }
+        
+        //filtar en base a ingredientes que quiero
+        
+        //filtar en base a ingredientes no quiero
+        
+        //filtar en base a calorias
+        
+        
     }
     
-    func getSelected(forIndices : [IndexPath], forArray : [String]){
+    func getSelected(forIndices : [IndexPath], forArray : [String]) -> [String]{
         
         var selected = [String]()
         for i in 0 ..< forIndices.count{
             selected.append(forArray[forIndices[i].row])
         }
+        return selected
     }
     
     
