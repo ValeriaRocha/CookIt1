@@ -35,7 +35,7 @@ class TableViewControllerCategorias: UITableViewController {
         ingredientes.append(ingrediente)
         var opinion = Opinion(ranking: 5, comentario: "Excelente receta")
         opiniones.append(opinion)
-        var receta = Receta(nombre: "Pollo con Espinaca", dificultad: "Media", duracion: 60, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 100, nutricion: info, url: "jNalUWQrW7E&t=1s", imagen: #imageLiteral(resourceName: "pollo"), rank: 5, instrucciones: "1. Descongelar el pollo\n2. Cortar Espinaca\n", nacionalidad: "Multi-Nacionalidad")
+        var receta = Receta(nombre: "Pollo con Espinaca", dificultad: "Media", duracion: 60, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 100, nutricion: info, url: "jNalUWQrW7E&t=1s", imagen: #imageLiteral(resourceName: "pollo"), rank: 5, instrucciones: "1. Descongelar el pollo\n2. Cortar Espinaca\n", nacionalidad: "Multi-Nacionalidad", ingMatch: 0)
         recetas.append(receta)
         
         ingredientes.removeAll()
@@ -47,7 +47,7 @@ class TableViewControllerCategorias: UITableViewController {
         ingredientes.append(ingrediente)
         opinion = Opinion(ranking: 9, comentario: "Delicioso")
         opiniones.append(opinion)
-        receta = Receta(nombre: "Malteada de Platano", dificultad: "Baja", duracion: 10, categoria: "Bebidas", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "WE8HqGtPUIo", imagen: #imageLiteral(resourceName: "malteada"), rank: 9, instrucciones: "1.En la licuadora agregamos el plátano, el extracto de vainilla, el chocolate en polvo y por último la leche.\n2. Licuamos hasta ver todo incorporado y listo!", nacionalidad: "Multi-Nacionalidad")
+        receta = Receta(nombre: "Malteada de Platano", dificultad: "Baja", duracion: 10, categoria: "Bebidas", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "WE8HqGtPUIo", imagen: #imageLiteral(resourceName: "malteada"), rank: 9, instrucciones: "1.En la licuadora agregamos el plátano, el extracto de vainilla, el chocolate en polvo y por último la leche.\n2. Licuamos hasta ver todo incorporado y listo!", nacionalidad: "Multi-Nacionalidad", ingMatch: 0)
         recetas.append(receta)
         
         ingredientes.removeAll()
@@ -61,7 +61,7 @@ class TableViewControllerCategorias: UITableViewController {
         ingredientes.append(ingrediente)
         opinion = Opinion(ranking: 9, comentario: "Que ricos brownies!")
         opiniones.append(opinion)
-        receta = Receta(nombre: "Brownies", dificultad: "Baja", duracion: 50, categoria: "Postres", ingredientes: ingredientes, opiniones: opiniones, precio: 30, nutricion: info, url: "lIb_741_dIw", imagen: #imageLiteral(resourceName: "brownies"), rank: 9, instrucciones: "1.Vertir agua y aceite en un contenedor\n2. Añadir los huevos\n3.Revolver mezcla durante 1 min\n", nacionalidad: "Multi-Nacionalidad")
+        receta = Receta(nombre: "Brownies", dificultad: "Baja", duracion: 50, categoria: "Postres", ingredientes: ingredientes, opiniones: opiniones, precio: 30, nutricion: info, url: "lIb_741_dIw", imagen: #imageLiteral(resourceName: "brownies"), rank: 9, instrucciones: "1.Vertir agua y aceite en un contenedor\n2. Añadir los huevos\n3.Revolver mezcla durante 1 min\n", nacionalidad: "Multi-Nacionalidad", ingMatch: 0)
         recetas.append(receta)
         
         ingredientes.removeAll()
@@ -73,7 +73,7 @@ class TableViewControllerCategorias: UITableViewController {
         ingredientes.append(ingrediente)
         opinion = Opinion(ranking: 10, comentario: "Sabroso")
         opiniones.append(opinion)
-        receta = Receta(nombre: "Pato a la Naranja", dificultad: "Alta", duracion: 50, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "boSY78CrMCY", imagen: #imageLiteral(resourceName: "patoNaranja"), rank: 10, instrucciones: "1.Vertir agua y aceite en un contenedor\n2. Añadir los huevos\n3.Revolver mezcla durante 1 min\n", nacionalidad: "Multi-Nacionalidad")
+        receta = Receta(nombre: "Pato a la Naranja", dificultad: "Alta", duracion: 50, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "boSY78CrMCY", imagen: #imageLiteral(resourceName: "patoNaranja"), rank: 10, instrucciones: "1.Vertir agua y aceite en un contenedor\n2. Añadir los huevos\n3.Revolver mezcla durante 1 min\n", nacionalidad: "Multi-Nacionalidad", ingMatch: 0)
         recetas.append(receta)
         
         ingredientes.removeAll()
@@ -97,7 +97,7 @@ class TableViewControllerCategorias: UITableViewController {
         ingredientes.append(ingrediente)
         opinion = Opinion(ranking: 5, comentario: "Delicioso platillo para todos los miembros de la familia")
         opiniones.append(opinion)
-        receta = Receta(nombre: "Espaguetti a la Boloñesa", dificultad: "Baja", duracion: 30, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 30, nutricion: info, url: "syMvcAsa2zY", imagen: #imageLiteral(resourceName: "espaguetti"), rank: 5, instrucciones: "1.Picar finamente el ajo y la cebolla.\n2.Acitronar la cebolla y el ajo en un poco de aceite de oliva un par de minutos hasta que se torne un poco transparente. \n3.Agregar la albahaca y cocer un minuto hasta que suerte su aroma. \n4.Añadir la carne molida, desbaratar bien con una pala y continuar cociendo hasta que ya no se vea rosa. \n5.Agregar el puré, sazonar con sal y cocer a lumbre bajita 15 minutos. \n6.Poner agua a hervir en una olla grande honda. \n7.Agregar sal y dejar que recupere el hervor. \n8.Agregar la pasta y cocer de 7 a 11 minutos o hasta que esté al dente (suave por fuera y firme por dentro). \n9.Escurrir. \n10.Colocar la pasta en dos platos. \n11.Cubrir cada uno con la salsa. \n12.Espolvorear con queso parmesano. \n13.Servir inmediatamente.", nacionalidad: "Italiana")
+        receta = Receta(nombre: "Espaguetti a la Boloñesa", dificultad: "Baja", duracion: 30, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 30, nutricion: info, url: "syMvcAsa2zY", imagen: #imageLiteral(resourceName: "espaguetti"), rank: 5, instrucciones: "1.Picar finamente el ajo y la cebolla.\n2.Acitronar la cebolla y el ajo en un poco de aceite de oliva un par de minutos hasta que se torne un poco transparente. \n3.Agregar la albahaca y cocer un minuto hasta que suerte su aroma. \n4.Añadir la carne molida, desbaratar bien con una pala y continuar cociendo hasta que ya no se vea rosa. \n5.Agregar el puré, sazonar con sal y cocer a lumbre bajita 15 minutos. \n6.Poner agua a hervir en una olla grande honda. \n7.Agregar sal y dejar que recupere el hervor. \n8.Agregar la pasta y cocer de 7 a 11 minutos o hasta que esté al dente (suave por fuera y firme por dentro). \n9.Escurrir. \n10.Colocar la pasta en dos platos. \n11.Cubrir cada uno con la salsa. \n12.Espolvorear con queso parmesano. \n13.Servir inmediatamente.", nacionalidad: "Italiana", ingMatch: 0)
         recetas.append(receta)
         
         ingredientes.removeAll()
@@ -127,7 +127,7 @@ class TableViewControllerCategorias: UITableViewController {
         ingredientes.append(ingrediente)
         opinion = Opinion(ranking: 8, comentario: "Buena opción para diabeticos!")
         opiniones.append(opinion)
-        receta = Receta(nombre: "Guisado de coles de bruselas con carne", dificultad: "Baja", duracion: 20, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 30, nutricion: info, url: "grJoKYgtvZ4", imagen: #imageLiteral(resourceName: "guisado"), rank: 8, instrucciones: "1. Cortar las coles bruselas en dos partes y el chayote en trozos pequeños. \n2.Picar finamente el diente de ajo,  cebolla y jitomate guaje. \n3.Reservar. \n4.Poner a hervir las coles bruselas en una olla honda con suficiente agua y un poquito de sal durante 5 minutos. \n5.Escurrir. \n6.Calentar la cucharada de aceite en un sartén y cuando esté caliente, sofreír el ajo picado y la cebolla picada durante un par de minutos. \n7.Añadir la carne molida y continuar cociendo unos minutos más hasta que la carne cambie de color. Agregar el chayote y jitomate  picado, sazonar con orégano, tomillo, paprika y sal al gusto. \n8.Continuar cociendo tapado a fuego bajo durante 10 minutos. \n9.Añadir las coles de Bruselas y rectificar sazón. \n10.Servir caliente.", nacionalidad: "Multi-Nacionalidad")
+        receta = Receta(nombre: "Guisado de coles de bruselas con carne", dificultad: "Baja", duracion: 20, categoria: "Platos Fuertes", ingredientes: ingredientes, opiniones: opiniones, precio: 30, nutricion: info, url: "grJoKYgtvZ4", imagen: #imageLiteral(resourceName: "guisado"), rank: 8, instrucciones: "1. Cortar las coles bruselas en dos partes y el chayote en trozos pequeños. \n2.Picar finamente el diente de ajo,  cebolla y jitomate guaje. \n3.Reservar. \n4.Poner a hervir las coles bruselas en una olla honda con suficiente agua y un poquito de sal durante 5 minutos. \n5.Escurrir. \n6.Calentar la cucharada de aceite en un sartén y cuando esté caliente, sofreír el ajo picado y la cebolla picada durante un par de minutos. \n7.Añadir la carne molida y continuar cociendo unos minutos más hasta que la carne cambie de color. Agregar el chayote y jitomate  picado, sazonar con orégano, tomillo, paprika y sal al gusto. \n8.Continuar cociendo tapado a fuego bajo durante 10 minutos. \n9.Añadir las coles de Bruselas y rectificar sazón. \n10.Servir caliente.", nacionalidad: "Multi-Nacionalidad", ingMatch: 0)
         recetas.append(receta)
 
 
@@ -150,7 +150,7 @@ class TableViewControllerCategorias: UITableViewController {
         ingredientes.append(ingrediente)
         opinion = Opinion(ranking: 4, comentario: "Fácil y rápido de hacer")
         opiniones.append(opinion)
-        receta = Receta(nombre: "Quesadillas de Vegetales", dificultad: "Baja", duracion: 20, categoria: "Desayuno", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "HwSU1mccnRA", imagen: #imageLiteral(resourceName: "quesadillasVegetales"), rank: 4, instrucciones: "1. Desgranar el elote  y reservar. Picar el pimiento morrón, la cebolla, el jitomate guaje y el cilantro. 2.Sofreír en el sartén con aceite el pimiento morrón picado junto con el elote desgranado y la cebolla picada durante 5 minutos. 3.Agregar el tomate picado y continuar cociendo 5 minutos más meneando con frecuencia. 4.Agregar el cilantro picado, sazonar con sal y reservar. 5.Cortar el queso en rebanaditas delgadas. 6.Colocar una rebanada de queso sobre cada tortilla, agregar las verduras y doblar a la mitad en forma de quesadilla. 7.Ponerlas en el comal a fuego lento  y dejar que se derrita el queso y la tortilla quede crujiente  y ligeramente dorada. 8.Servir calientes.", nacionalidad: "Multi-Nacionalidad")
+        receta = Receta(nombre: "Quesadillas de Vegetales", dificultad: "Baja", duracion: 20, categoria: "Desayuno", ingredientes: ingredientes, opiniones: opiniones, precio: 20, nutricion: info, url: "HwSU1mccnRA", imagen: #imageLiteral(resourceName: "quesadillasVegetales"), rank: 4, instrucciones: "1. Desgranar el elote  y reservar. Picar el pimiento morrón, la cebolla, el jitomate guaje y el cilantro. 2.Sofreír en el sartén con aceite el pimiento morrón picado junto con el elote desgranado y la cebolla picada durante 5 minutos. 3.Agregar el tomate picado y continuar cociendo 5 minutos más meneando con frecuencia. 4.Agregar el cilantro picado, sazonar con sal y reservar. 5.Cortar el queso en rebanaditas delgadas. 6.Colocar una rebanada de queso sobre cada tortilla, agregar las verduras y doblar a la mitad en forma de quesadilla. 7.Ponerlas en el comal a fuego lento  y dejar que se derrita el queso y la tortilla quede crujiente  y ligeramente dorada. 8.Servir calientes.", nacionalidad: "Multi-Nacionalidad", ingMatch: 0)
             recetas.append(receta)
 
         
@@ -235,9 +235,11 @@ class TableViewControllerCategorias: UITableViewController {
         let vista = segue.destination as! TableViewControllerRecetas
         let index = tableView.indexPathForSelectedRow!
         //let rec = listaRecetas.getRecetas(forCategoria: categorias[index.row])
-        let rec = ListaRecetas.baseRecetas.getRecetas(forCategoria: categorias[index.row])
+        var rec = ListaRecetas.baseRecetas.getRecetas(forCategoria: categorias[index.row])
         vista.category = categorias[index.row]
+        rec.sort(by: {$0.rank > $1.rank})
         vista.recetas = rec
+        vista.mostrarMatch = false
     }
     
 

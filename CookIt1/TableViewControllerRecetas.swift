@@ -12,6 +12,7 @@ class TableViewControllerRecetas: UITableViewController {
     
     var recetas = [Receta]()
     var category : String!
+    var mostrarMatch : Bool!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,6 @@ class TableViewControllerRecetas: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         title = category
-        recetas.sort(by: { $0.rank > $1.rank})
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,11 +55,17 @@ class TableViewControllerRecetas: UITableViewController {
         cell.lbDuracion.text = String(recetas[indexPath.row].duracion)
         cell.lbDificultad.text = "Dificultad: " + recetas[indexPath.row].dificultad
 
+        if mostrarMatch {
+            cell.lbMatch.text = String(recetas[indexPath.row].ingMatch) + "% Match"
+        } else {
+            cell.lbMatch.text = ""
+        }
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 158
+        return 185
     }
     
 

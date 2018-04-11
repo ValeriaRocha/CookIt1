@@ -322,37 +322,53 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
              recetas = recetas.filter({$0.duracion <= duracion})
         }
         
-        print("duracion")
-        for i in 0..<recetas.count{
-            print(recetas[i].nombre)
-        }
-        
         //filtar en base a precio
         if let precio = Double(tfPrecio.text!){
             recetas = recetas.filter({$0.precio <= precio})
         }
-        
-        print("precio")
 
-        for i in 0..<recetas.count{
-            print(recetas[i].nombre)
-        }
-        
         //filtar en base a ranking
         if let rank = Double(tfRanking.text!){
             recetas = recetas.filter({$0.rank >= rank})
         }
         
-        print("ranking")
-
-        for i in 0..<recetas.count{
-            print(recetas[i].nombre)
+        //sacar el porcentaje de los ingredientes que hacen match a los seleccionados por cada receta
+        for rec in 0..<recetas.count{
+            var ingredientes = [String]()
+            var cantIng = 0.0
+            
+            //sacar los nombres de los ingredientes que tiene esa receta
+            for ing in 0..<recetas[rec].ingredientes.count{
+                ingredientes.append(recetas[rec].ingredientes[ing].nombre)
+            }
+            
+            //por cada ingrediente seleccionado por el usuario, checar si la receta en cuestion lo contiene
+            for i in 0..<ingSelect.count {
+                if ingredientes.contains(ingSelect[i]){
+                    cantIng += 1
+                }
+            }
+            
+            //sacar porcentaje de match de los ingredientes
+            recetas[rec].ingMatch = (cantIng/Double(ingSelect.count)) * 100.0
         }
         
-        //filtar en base a ingredientes que quiero
-        
-        
-        //filtar en base a ingredientes no quiero
+        //filtar en base a ingredientes no quiero, noIngSelect
+        for rec in 0..<recetas.count{
+            var ingredientes = [String]()
+            
+            //sacar los nombres de los ingredientes que tiene esa receta
+            for ing in 0..<recetas[rec].ingredientes.count{
+                ingredientes.append(recetas[rec].ingredientes[ing].nombre)
+            }
+            
+            //por cada ingrediente no deseado seleccionado por el usuario, checar si la receta en cuestion lo contiene
+            for i in 0..<noIngSelect.count {
+                if ingredientes.contains(noIngSelect[i]){
+                    recetas.remove(at: rec)  //si contiene un ingrediente no deseado, no incluir receta
+                }
+            }
+        }
         
         //filtar en base a calorias
         if let calorias = Double(tfMaxCalorias.text!){
@@ -361,7 +377,61 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         
         //filtrar en base a caracteristicas de nutricion
         
-        //ordenar
+        
+        
+        
+        
+        //ordenar : ["Calorias", "Duracion", "Precio"]
+        if let seleccionado = tableViewOrdenar.indexPathForSelectedRow {
+            switch(seleccionado.row){
+            case 0:
+                recetas.sort(by: {
+                    if $0.ingMatch !=  $1.ingMatch{
+                        return $0.ingMatch > $1.ingMatch
+                    } else {
+                        return $0.nutricion.calorias < $1.nutricion.calorias
+                    }
+                })
+                break;
+                
+            case 1:
+                recetas.sort(by: {
+                    if $0.ingMatch !=  $1.ingMatch{
+                        return $0.ingMatch > $1.ingMatch
+                    } else {
+                        return $0.duracion < $1.duracion
+                    }
+                })
+                break;
+                
+            case 2:
+                recetas.sort(by: {
+                    if $0.ingMatch !=  $1.ingMatch{
+                        return $0.ingMatch > $1.ingMatch
+                    } else {
+                        return $0.precio < $1.precio
+                    }
+                })
+                break;
+                
+            default:
+                recetas.sort(by: {
+                    if $0.ingMatch !=  $1.ingMatch{
+                        return $0.ingMatch > $1.ingMatch
+                    } else {
+                        return $0.precio < $1.precio
+                    }
+                })
+                break;
+            }
+        } else {
+            recetas.sort(by: {$0.ingMatch > $1.ingMatch})
+        }
+        
+        print("ordena")
+        for i in 0..<recetas.count{
+            print(recetas[i].nombre)
+        }
         
     }
     
@@ -384,6 +454,13 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vista = segue.destination as! TableViewControllerRecetas
         vista.recetas = recetas
+        
+        if ingSelect.count != 0 && !switchIng.isOn{
+            vista.mostrarMatch = true
+        } else{
+            vista.mostrarMatch = false
+        }
+        
     }
 
 

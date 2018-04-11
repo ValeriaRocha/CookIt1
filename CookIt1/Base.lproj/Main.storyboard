@@ -487,15 +487,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celda" rowHeight="154" id="Z14-GI-pQY" customClass="TableViewCellReceta" customModule="CookIt1" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="154"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celda" rowHeight="195" id="Z14-GI-pQY" customClass="TableViewCellReceta" customModule="CookIt1" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="195"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z14-GI-pQY" id="lh3-76-hPY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="153.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="194.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JZG-oL-BG1">
-                                            <rect key="frame" x="0.0" y="0.0" width="170" height="154"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="170" height="195"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2O-tU-mRr">
@@ -541,6 +541,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Match Percentage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wq7-Fs-aaS">
+                                            <rect key="frame" x="184" y="155" width="144" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -548,6 +555,7 @@
                                     <outlet property="lbCalorias" destination="j3n-D3-9vW" id="jKP-uc-zA7"/>
                                     <outlet property="lbDificultad" destination="pUC-Lt-R2u" id="h1E-fP-ckr"/>
                                     <outlet property="lbDuracion" destination="nne-w8-AOH" id="ttY-hV-NOI"/>
+                                    <outlet property="lbMatch" destination="Wq7-Fs-aaS" id="TJd-yw-W8g"/>
                                     <outlet property="lbNombre" destination="I2O-tU-mRr" id="vRZ-kD-QMP"/>
                                     <outlet property="lbRank" destination="5Bj-H4-Q0u" id="v5a-TU-RU1"/>
                                     <segue destination="hmE-xD-DXN" kind="show" id="6IJ-Jo-dg6"/>
@@ -811,6 +819,6 @@
         <image name="star" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9y2-7V-dRb"/>
+        <segue reference="Ase-xQ-KOm"/>
     </inferredMetricsTieBreakers>
 </document>

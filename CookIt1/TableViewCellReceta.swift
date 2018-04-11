@@ -17,6 +17,7 @@ class TableViewCellReceta: UITableViewCell {
     @IBOutlet weak var lbCalorias: UILabel!
     @IBOutlet weak var lbDuracion: UILabel!
     @IBOutlet weak var lbRank: UILabel!
+    @IBOutlet weak var lbMatch: UILabel!
     
     
     override func awakeFromNib() {
