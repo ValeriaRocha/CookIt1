@@ -171,13 +171,8 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if tableView == self.tableViewCategorias || tableView == self.tableView {
-//            return 20
-//        }
         return 30
     }
-
-    
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //update ingSelect
@@ -356,10 +351,17 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         
         //filtar en base a ingredientes que quiero
         
+        
         //filtar en base a ingredientes no quiero
         
         //filtar en base a calorias
+        if let calorias = Double(tfMaxCalorias.text!){
+            recetas = recetas.filter({$0.nutricion.calorias <= calorias})
+        }
         
+        //filtrar en base a caracteristicas de nutricion
+        
+        //ordenar
         
     }
     
