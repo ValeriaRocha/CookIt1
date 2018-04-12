@@ -35,6 +35,10 @@ class VCtrllerDetalleReceta: UIViewController, WKUIDelegate, WKNavigationDelegat
         
         title = receta.nombre
         
+//        tvIngredientes.layer.cornerRadius = 0.05 * tvIngredientes.bounds.size.width
+//        tvComentarios.layer.cornerRadius = 0.05 * tvComentarios.bounds.size.width
+//        tvInstrucciones.layer.cornerRadius = 0.05 * tvInstrucciones.bounds.size.width
+        
         let video = "https://www.youtube.com/embed/\(receta.url)"
         let myURL = URL(string: video)
         let myRequest = URLRequest(url: myURL!)
