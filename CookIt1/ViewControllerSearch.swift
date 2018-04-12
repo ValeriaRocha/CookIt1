@@ -333,45 +333,44 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         //Si no selecciono nada el usuario, tomar en cuenta todos los ingredientes
-        if ingSelect.count == 0 {
-            ingSelect = ing
-        }
-        //sacar el porcentaje de los ingredientes que hacen match a los seleccionados por cada receta
-        for rec in 0..<recetas.count{
-            var ingredientes = [String]()
-            var cantIng = 0.0
-            
-            //sacar los nombres de los ingredientes que tiene esa receta
-            for ing in 0..<recetas[rec].ingredientes.count{
-                ingredientes.append(recetas[rec].ingredientes[ing].nombre)
-            }
-            
-            //por cada ingrediente seleccionado por el usuario, checar si la receta en cuestion lo contiene
-            for i in 0..<ingSelect.count {
-                if ingredientes.contains(ingSelect[i]){
-                    cantIng += 1
+        if ingSelect.count != 0 {
+            //sacar el porcentaje de los ingredientes que hacen match a los seleccionados por cada receta
+            for rec in 0..<recetas.count{
+                var ingredientes = [String]()
+                var cantIng = 0.0
+                
+                //sacar los nombres de los ingredientes que tiene esa receta
+                for ing in 0..<recetas[rec].ingredientes.count{
+                    ingredientes.append(recetas[rec].ingredientes[ing].nombre)
                 }
+                
+                //por cada ingrediente seleccionado por el usuario, checar si la receta en cuestion lo contiene
+                for i in 0..<ingSelect.count {
+                    if ingredientes.contains(ingSelect[i]){
+                        cantIng += 1
+                    }
+                }
+                
+                //sacar porcentaje de match de los ingredientes
+                recetas[rec].ingMatch = (cantIng/Double(ingSelect.count)) * 100.0
             }
             
-            //sacar porcentaje de match de los ingredientes
-            recetas[rec].ingMatch = (cantIng/Double(ingSelect.count)) * 100.0
-        }
-        
-        //*************************************
-        //elimar las que tengan un match de 0
-        var rec = 0
-        while rec < recetas.count {
-            if recetas[rec].ingMatch == 0{
-                recetas.remove(at: rec)
-                rec -= 1
+            //*************************************
+            //elimar las que tengan un match de 0
+            var rec = 0
+            while rec < recetas.count {
+                if recetas[rec].ingMatch == 0{
+                    recetas.remove(at: rec)
+                    rec -= 1
+                }
+                rec += 1
             }
-            rec += 1
+            
+            //*************************************
         }
-        
-        //*************************************
         
         //filtar en base a ingredientes no quiero, noIngSelect
-        rec = 0
+        var rec = 0
         while rec < recetas.count{
         
             var ingredientes = [String]()
@@ -395,9 +394,81 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         if let calorias = Double(tfMaxCalorias.text!){
             recetas = recetas.filter({$0.nutricion.calorias <= calorias})
         }
+        if let caloriasMin = Double(tfMinCalorias.text!){
+            recetas = recetas.filter({$0.nutricion.calorias >= caloriasMin})
+        }
         
         //filtrar en base a caracteristicas de nutricion
-        
+        //         caractNutricion = ["Sin Gluten", "Sin Lactosa", "Vegetariana", "Vegana", "Fuente de fibra", "Alto en Carbohidratos", "Bajo en Carbohidratos", "Alto en Proteinas", "Aceptable para Diabeticos"]
+        rec = 0
+        while rec < recetas.count{
+            
+            if let indices = tableViewNutricion.indexPathsForSelectedRows{
+                for i in 0..<indices.count{
+                    switch(indices[i].row){
+                    case 0:
+                        if recetas[rec].nutricion.gluten{
+                            recetas.remove(at: rec)
+                            rec -= 1
+                        }
+                        break;
+                    case 1:
+                        if recetas[rec].nutricion.lactosa{
+                            recetas.remove(at: rec)
+                            rec -= 1
+                        }
+                        break;
+                    case 2:
+                        if !recetas[rec].nutricion.vegetariana{
+                            recetas.remove(at: rec)
+                            rec -= 1
+                        }
+                        break;
+                    case 3:
+                        if !recetas[rec].nutricion.vegana{
+                            recetas.remove(at: rec)
+                            rec -= 1
+                        }
+                        break;
+                    case 4:
+                        if !recetas[rec].nutricion.fuenteFibra{
+                            recetas.remove(at: rec)
+                            rec -= 1
+                        }
+                        break;
+                    case 5:
+                        if !recetas[rec].nutricion.highCarbs{
+                            recetas.remove(at: rec)
+                            rec -= 1
+                        }
+                        break;
+                    case 6:
+                        if !recetas[rec].nutricion.lowCarbs{
+                            recetas.remove(at: rec)
+                            rec -= 1
+                        }
+                        break;
+                    case 7:
+                        if !recetas[rec].nutricion.highProtein{
+                            recetas.remove(at: rec)
+                            rec -= 1
+                        }
+                        break;
+                    case 8:
+                        if !recetas[rec].nutricion.forDiabetics{
+                            recetas.remove(at: rec)
+                            rec -= 1
+                        }
+                        break;
+                    default:
+                        break;
+                        
+                    }
+                }
+            }
+            
+            rec += 1
+        }
         
         
         
@@ -545,7 +616,7 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         let vista = segue.destination as! TableViewControllerRecetas
         vista.recetas = recetas
         
-        if ingSelect.count != 0 && !switchIng.isOn{
+        if ingSelect.count != 0 {
             vista.mostrarMatch = true
         } else{
             vista.mostrarMatch = false

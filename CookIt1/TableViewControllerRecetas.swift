@@ -56,7 +56,7 @@ class TableViewControllerRecetas: UITableViewController {
         cell.lbDificultad.text = "Dificultad: " + recetas[indexPath.row].dificultad
 
         if mostrarMatch {
-            cell.lbMatch.text = String(recetas[indexPath.row].ingMatch) + "% Match"
+            cell.lbMatch.text = String(format: " %.2f%% Match", recetas[indexPath.row].ingMatch)
         } else {
             cell.lbMatch.text = ""
         }
