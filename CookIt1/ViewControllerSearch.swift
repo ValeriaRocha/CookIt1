@@ -44,7 +44,7 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
     var noIngFilter = [String]()
     var noIngSelect = [String]()
     var buscandoNoIng : Bool!
-    var listaOrdenar = ["Calorias", "Duracion", "Precio"]
+    var listaOrdenar = ["Calorias", "Duracion", "Precio", "Match"]
     var nacionalidades = [String]()
     
     //table View solitario no tiene amigos
@@ -332,6 +332,10 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
             recetas = recetas.filter({$0.rank >= rank})
         }
         
+        //Si no selecciono nada el usuario, tomar en cuenta todos los ingredientes
+        if ingSelect.count == 0 {
+            ingSelect = ing
+        }
         //sacar el porcentaje de los ingredientes que hacen match a los seleccionados por cada receta
         for rec in 0..<recetas.count{
             var ingredientes = [String]()
@@ -353,8 +357,23 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
             recetas[rec].ingMatch = (cantIng/Double(ingSelect.count)) * 100.0
         }
         
+        //*************************************
+        //elimar las que tengan un match de 0
+        var rec = 0
+        while rec < recetas.count {
+            if recetas[rec].ingMatch == 0{
+                recetas.remove(at: rec)
+                rec -= 1
+            }
+            rec += 1
+        }
+        
+        //*************************************
+        
         //filtar en base a ingredientes no quiero, noIngSelect
-        for rec in 0..<recetas.count{
+        rec = 0
+        while rec < recetas.count{
+        
             var ingredientes = [String]()
             
             //sacar los nombres de los ingredientes que tiene esa receta
@@ -366,8 +385,10 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
             for i in 0..<noIngSelect.count {
                 if ingredientes.contains(noIngSelect[i]){
                     recetas.remove(at: rec)  //si contiene un ingrediente no deseado, no incluir receta
+                    rec -= 1
                 }
             }
+            rec += 1
         }
         
         //filtar en base a calorias
@@ -381,10 +402,94 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         
-        //ordenar : ["Calorias", "Duracion", "Precio"]
+//        //ordenar : ["Calorias", "Duracion", "Precio"]
+//        if let seleccionado = tableViewOrdenar.indexPathForSelectedRow {
+//            switch(seleccionado.row){
+//            case 0:
+//                recetas.sort(by: {
+//                    if $0.ingMatch !=  $1.ingMatch{
+//                        return $0.ingMatch > $1.ingMatch
+//                    } else {
+//                        return $0.nutricion.calorias < $1.nutricion.calorias
+//                    }
+//                })
+//                break;
+//
+//            case 1:
+//                recetas.sort(by: {
+//                    if $0.ingMatch !=  $1.ingMatch{
+//                        return $0.ingMatch > $1.ingMatch
+//                    } else {
+//                        return $0.duracion < $1.duracion
+//                    }
+//                })
+//                break;
+//
+//            case 2:
+//                recetas.sort(by: {
+//                    if $0.ingMatch !=  $1.ingMatch{
+//                        return $0.ingMatch > $1.ingMatch
+//                    } else {
+//                        return $0.precio < $1.precio
+//                    }
+//                })
+//                break;
+//
+//            default:
+//                recetas.sort(by: {
+//                    if $0.ingMatch !=  $1.ingMatch{
+//                        return $0.ingMatch > $1.ingMatch
+//                    } else {
+//                        return $0.precio < $1.precio
+//                    }
+//                })
+//                break;
+//            }
+//        } else {
+//            recetas.sort(by: {$0.ingMatch > $1.ingMatch})
+//        }
+//
+//        print("ordena")
+//        for i in 0..<recetas.count{
+//            print(recetas[i].nombre)
+//        }
+//
+//    }
+    
+        //ordenar : ["Calorias", "Duracion", "Precio", "Match"]
         if let seleccionado = tableViewOrdenar.indexPathForSelectedRow {
             switch(seleccionado.row){
             case 0:
+                recetas.sort(by: {
+                    if $0.nutricion.calorias !=  $1.nutricion.calorias{
+                        return $0.nutricion.calorias < $1.nutricion.calorias
+                    } else {
+                        return $0.ingMatch > $1.ingMatch
+                    }
+                })
+                break;
+                
+            case 1:
+                recetas.sort(by: {
+                    if $0.duracion !=  $1.duracion{
+                        return $0.duracion < $1.duracion
+                    } else {
+                        return $0.ingMatch > $1.ingMatch
+                    }
+                })
+                break;
+                
+            case 2:
+                recetas.sort(by: {
+                    if $0.precio !=  $1.precio{
+                        return $0.precio < $1.precio
+                    } else {
+                        return $0.ingMatch > $1.ingMatch
+                    }
+                })
+                break;
+                
+            case 3:
                 recetas.sort(by: {
                     if $0.ingMatch !=  $1.ingMatch{
                         return $0.ingMatch > $1.ingMatch
@@ -394,44 +499,29 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
                 })
                 break;
                 
-            case 1:
-                recetas.sort(by: {
-                    if $0.ingMatch !=  $1.ingMatch{
-                        return $0.ingMatch > $1.ingMatch
-                    } else {
-                        return $0.duracion < $1.duracion
-                    }
-                })
-                break;
                 
-            case 2:
-                recetas.sort(by: {
-                    if $0.ingMatch !=  $1.ingMatch{
-                        return $0.ingMatch > $1.ingMatch
-                    } else {
-                        return $0.precio < $1.precio
-                    }
-                })
-                break;
                 
             default:
                 recetas.sort(by: {
                     if $0.ingMatch !=  $1.ingMatch{
                         return $0.ingMatch > $1.ingMatch
                     } else {
-                        return $0.precio < $1.precio
+                        return $0.nutricion.calorias < $1.nutricion.calorias
                     }
                 })
                 break;
             }
         } else {
-            recetas.sort(by: {$0.ingMatch > $1.ingMatch})
+            recetas.sort(by: {
+                if $0.ingMatch !=  $1.ingMatch{
+                    return $0.ingMatch > $1.ingMatch
+                } else {
+                    return $0.nutricion.calorias < $1.nutricion.calorias
+                }
+            })
         }
         
-        print("ordena")
-        for i in 0..<recetas.count{
-            print(recetas[i].nombre)
-        }
+       
         
     }
     
