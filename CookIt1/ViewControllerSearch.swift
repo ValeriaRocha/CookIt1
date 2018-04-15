@@ -27,9 +27,6 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tfMaxCalorias: UITextField!
     
     
-    //switch
-    @IBOutlet weak var switchIng: UISwitch!
-    
     
     let nivel = ["Baja", "Media", "Alta"]
     var caractNutricion = [String]()
@@ -283,9 +280,10 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         recetas = ListaRecetas.baseRecetas.recetas
 
         print("Ingredientes seleccionados")
-        for i in 0 ..< ingSelect.count{
-            print(ingSelect[i])
+        for i in 0 ..< recetas.count{
+            print(recetas[i].nombre)
         }
+        print("\n")
         
         //filtrar en base a dificultad
         var selectedLevels = [String]()
@@ -295,6 +293,12 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
             selectedLevels = nivel
         }
         recetas = recetas.filter({selectedLevels.contains($0.dificultad)})
+        
+        print("Ingredientes seleccionados dif")
+        for i in 0 ..< recetas.count{
+            print(recetas[i].nombre)
+        }
+        print("\n")
 
         //filtar en base a categorias
         var categoriasSelect = [String]()
@@ -305,6 +309,12 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         }
         recetas = recetas.filter({categoriasSelect.contains($0.categoria)})
         
+        print("Ingredientes seleccionados cat")
+        for i in 0 ..< recetas.count{
+            print(recetas[i].nombre)
+        }
+        print("\n")
+        
         //filtar en base a nacionalidad
         var nacioSelect = [String]()
         if let indices = tableViewNacionalidad.indexPathsForSelectedRows{
@@ -314,23 +324,44 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         }
         recetas = recetas.filter({nacioSelect.contains($0.nacionalidad!)})
         
-        for i in 0..<recetas.count{
+        print("Ingredientes seleccionados nac")
+        for i in 0 ..< recetas.count{
             print(recetas[i].nombre)
         }
+        print("\n")
+        
         //filtar en base a duracion
         if let duracion = Double(tfDuracion.text!){
              recetas = recetas.filter({$0.duracion <= duracion})
         }
         
+        print("Ingredientes seleccionados dur")
+        for i in 0 ..< recetas.count{
+            print(recetas[i].nombre)
+        }
+        print("\n")
+        
         //filtar en base a precio
         if let precio = Double(tfPrecio.text!){
             recetas = recetas.filter({$0.precio <= precio})
         }
+        
+        print("Ingredientes seleccionados precio")
+        for i in 0 ..< recetas.count{
+            print(recetas[i].nombre)
+        }
+        print("\n")
 
         //filtar en base a ranking
         if let rank = Double(tfRanking.text!){
             recetas = recetas.filter({$0.rank >= rank})
         }
+        
+        print("Ingredientes seleccionados rank")
+        for i in 0 ..< recetas.count{
+            print(recetas[i].nombre)
+        }
+        print("\n")
         
         //Si no selecciono nada el usuario, tomar en cuenta todos los ingredientes
         if ingSelect.count != 0 {
@@ -369,6 +400,12 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
             //*************************************
         }
         
+        print("Ingredientes seleccionados ing")
+        for i in 0 ..< recetas.count{
+            print(recetas[i].nombre)
+        }
+        print("\n")
+        
         //filtar en base a ingredientes no quiero, noIngSelect
         var rec = 0
         while rec < recetas.count{
@@ -390,6 +427,12 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
             rec += 1
         }
         
+        print("Ingredientes seleccionados ing no")
+        for i in 0 ..< recetas.count{
+            print(recetas[i].nombre)
+        }
+        print("\n")
+        
         //filtar en base a calorias
         if let calorias = Double(tfMaxCalorias.text!){
             recetas = recetas.filter({$0.nutricion.calorias <= calorias})
@@ -398,65 +441,81 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
             recetas = recetas.filter({$0.nutricion.calorias >= caloriasMin})
         }
         
+        print("Ingredientes seleccionados calorias")
+        for i in 0 ..< recetas.count{
+            print(recetas[i].nombre)
+        }
+        print("\n")
+        
         //filtrar en base a caracteristicas de nutricion
-        //         caractNutricion = ["Sin Gluten", "Sin Lactosa", "Vegetariana", "Vegana", "Fuente de fibra", "Alto en Carbohidratos", "Bajo en Carbohidratos", "Alto en Proteinas", "Aceptable para Diabeticos"]
         rec = 0
+        var cumple = true
         while rec < recetas.count{
-            
+            cumple = true
             if let indices = tableViewNutricion.indexPathsForSelectedRows{
-                for i in 0..<indices.count{
+                var i = 0
+                while i < indices.count && cumple{
                     switch(indices[i].row){
                     case 0:
                         if recetas[rec].nutricion.gluten{
                             recetas.remove(at: rec)
+                            cumple = false
                             rec -= 1
                         }
                         break;
                     case 1:
                         if recetas[rec].nutricion.lactosa{
                             recetas.remove(at: rec)
+                            cumple = false
                             rec -= 1
                         }
                         break;
                     case 2:
                         if !recetas[rec].nutricion.vegetariana{
                             recetas.remove(at: rec)
+                            cumple = false
                             rec -= 1
                         }
                         break;
                     case 3:
                         if !recetas[rec].nutricion.vegana{
                             recetas.remove(at: rec)
+                            cumple = false
                             rec -= 1
                         }
                         break;
                     case 4:
                         if !recetas[rec].nutricion.fuenteFibra{
                             recetas.remove(at: rec)
+                            cumple = false
                             rec -= 1
                         }
                         break;
                     case 5:
                         if !recetas[rec].nutricion.highCarbs{
                             recetas.remove(at: rec)
+                            cumple = false
                             rec -= 1
                         }
                         break;
                     case 6:
                         if !recetas[rec].nutricion.lowCarbs{
                             recetas.remove(at: rec)
+                            cumple = false
                             rec -= 1
                         }
                         break;
                     case 7:
                         if !recetas[rec].nutricion.highProtein{
                             recetas.remove(at: rec)
+                            cumple = false
                             rec -= 1
                         }
                         break;
                     case 8:
                         if !recetas[rec].nutricion.forDiabetics{
                             recetas.remove(at: rec)
+                            cumple = false
                             rec -= 1
                         }
                         break;
@@ -464,69 +523,19 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
                         break;
                         
                     }
+                    i += 1
                 }
             }
             
             rec += 1
         }
         
+        print("Ingredientes seleccionados nUTRI")
+        for i in 0 ..< recetas.count{
+            print(recetas[i].nombre)
+        }
+        print("\n")
         
-        
-        
-//        //ordenar : ["Calorias", "Duracion", "Precio"]
-//        if let seleccionado = tableViewOrdenar.indexPathForSelectedRow {
-//            switch(seleccionado.row){
-//            case 0:
-//                recetas.sort(by: {
-//                    if $0.ingMatch !=  $1.ingMatch{
-//                        return $0.ingMatch > $1.ingMatch
-//                    } else {
-//                        return $0.nutricion.calorias < $1.nutricion.calorias
-//                    }
-//                })
-//                break;
-//
-//            case 1:
-//                recetas.sort(by: {
-//                    if $0.ingMatch !=  $1.ingMatch{
-//                        return $0.ingMatch > $1.ingMatch
-//                    } else {
-//                        return $0.duracion < $1.duracion
-//                    }
-//                })
-//                break;
-//
-//            case 2:
-//                recetas.sort(by: {
-//                    if $0.ingMatch !=  $1.ingMatch{
-//                        return $0.ingMatch > $1.ingMatch
-//                    } else {
-//                        return $0.precio < $1.precio
-//                    }
-//                })
-//                break;
-//
-//            default:
-//                recetas.sort(by: {
-//                    if $0.ingMatch !=  $1.ingMatch{
-//                        return $0.ingMatch > $1.ingMatch
-//                    } else {
-//                        return $0.precio < $1.precio
-//                    }
-//                })
-//                break;
-//            }
-//        } else {
-//            recetas.sort(by: {$0.ingMatch > $1.ingMatch})
-//        }
-//
-//        print("ordena")
-//        for i in 0..<recetas.count{
-//            print(recetas[i].nombre)
-//        }
-//
-//    }
-    
         //ordenar : ["Calorias", "Duracion", "Precio", "Match"]
         if let seleccionado = tableViewOrdenar.indexPathForSelectedRow {
             switch(seleccionado.row){

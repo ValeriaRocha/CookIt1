@@ -29,6 +29,17 @@ class VCtrllerDetalleReceta: UIViewController, WKUIDelegate, WKNavigationDelegat
     @IBOutlet weak var tvComentarios: UITextView!
     @IBOutlet weak var viewGeneral: UIView!
     @IBOutlet weak var viewNutricion: UIView!
+    @IBOutlet weak var lbTitulo: UILabel!
+    
+    @IBOutlet weak var imgSinLacteos: UIImageView!
+    @IBOutlet weak var imgSinGluten: UIImageView!
+    @IBOutlet weak var imgVegetariana: UIImageView!
+    @IBOutlet weak var imgVegana: UIImageView!
+    @IBOutlet weak var imgFibra: UIImageView!
+    @IBOutlet weak var imgHighCarbs: UIImageView!
+    @IBOutlet weak var imgLowCarbs: UIImageView!
+    @IBOutlet weak var imgHighProtein: UIImageView!
+    @IBOutlet weak var imgDiabetics: UIImageView!
     
     
     
@@ -42,10 +53,12 @@ class VCtrllerDetalleReceta: UIViewController, WKUIDelegate, WKNavigationDelegat
         tvInstrucciones.layer.cornerRadius = 0.05 * tvInstrucciones.bounds.size.width
         viewGeneral.layer.cornerRadius = 0.05 * viewGeneral.bounds.size.width
         viewNutricion.layer.cornerRadius = 0.05 * viewNutricion.bounds.size.width
+        lbTitulo.layer.cornerRadius = 0.05 * lbTitulo.bounds.size.width
         
         tvIngredientes.layer.borderColor = #colorLiteral(red: 0.7721944899, green: 0.8830101413, blue: 0.9413864213, alpha: 1)
         tvInstrucciones.layer.borderColor = #colorLiteral(red: 0.7721944899, green: 0.8830101413, blue: 0.9413864213, alpha: 1)
         tvComentarios.layer.borderColor = #colorLiteral(red: 0.7721944899, green: 0.8830101413, blue: 0.9413864213, alpha: 1)
+        
         
         
         let video = "https://www.youtube.com/embed/\(receta.url)"
@@ -66,11 +79,18 @@ class VCtrllerDetalleReceta: UIViewController, WKUIDelegate, WKNavigationDelegat
         lbPrecio.text = String(receta.precio)
         tvInstrucciones.text = receta.instrucciones
         lbCalorias.text = "Calorias: " + String(receta.nutricion.calorias)
-        if receta.nutricion.gluten{
-            lbGluten.text = "Contiene gluten"
-        } else {
-            lbGluten.text = "Sin gluten"
-        }
+        
+        nutritionCheck(imagen: imgSinGluten, bool: !receta.nutricion.gluten)
+        nutritionCheck(imagen: imgSinLacteos, bool: !receta.nutricion.lactosa)
+        nutritionCheck(imagen: imgVegana, bool: receta.nutricion.vegana)
+        nutritionCheck(imagen: imgVegetariana, bool: receta.nutricion.vegetariana)
+        nutritionCheck(imagen: imgFibra, bool: receta.nutricion.fuenteFibra)
+        nutritionCheck(imagen: imgHighCarbs, bool: receta.nutricion.highCarbs)
+        nutritionCheck(imagen: imgLowCarbs, bool: receta.nutricion.lowCarbs)
+        nutritionCheck(imagen: imgHighProtein, bool: receta.nutricion.highProtein)
+        nutritionCheck(imagen: imgDiabetics, bool: receta.nutricion.forDiabetics)
+        
+        
         
         var ing = ""
         for i in 0 ..< receta.ingredientes.count{
@@ -87,6 +107,14 @@ class VCtrllerDetalleReceta: UIViewController, WKUIDelegate, WKNavigationDelegat
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    func nutritionCheck(imagen : UIImageView, bool : Bool){
+        if bool {
+            imagen.image = #imageLiteral(resourceName: "check")
+        } else {
+            imagen.image = #imageLiteral(resourceName: "cross")
+        }
     }
 
     override func didReceiveMemoryWarning() {
