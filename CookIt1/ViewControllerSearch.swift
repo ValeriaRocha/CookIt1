@@ -71,6 +71,34 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         tableViewNoIng.allowsMultipleSelection = true
         tableViewNutricion.allowsMultipleSelection = true
         tableViewNacionalidad.allowsMultipleSelection = true
+        
+        tableView.layer.borderColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+        tableView.layer.borderWidth = 1
+        tableView.layer.cornerRadius = 0.05 * tableView.bounds.size.width
+        
+        tableViewCategorias.layer.borderColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+        tableViewCategorias.layer.borderWidth = 1
+        tableViewCategorias.layer.cornerRadius = 0.05 * tableViewCategorias.bounds.size.width
+        
+        tableViewIngredientes.layer.borderColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+        tableViewIngredientes.layer.borderWidth = 1
+        tableViewIngredientes.layer.cornerRadius = 0.05 * tableViewIngredientes.bounds.size.width
+        
+        tableViewNoIng.layer.borderColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+        tableViewNoIng.layer.borderWidth = 1
+        tableViewNoIng.layer.cornerRadius = 0.05 * tableViewNoIng.bounds.size.width
+        
+        tableViewNutricion.layer.borderColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+        tableViewNutricion.layer.borderWidth = 1
+        tableViewNutricion.layer.cornerRadius = 0.05 * tableViewNutricion.bounds.size.width
+        
+        tableViewNacionalidad.layer.borderColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+        tableViewNacionalidad.layer.borderWidth = 1
+        tableViewNacionalidad.layer.cornerRadius = 0.05 * tableViewNacionalidad.bounds.size.width
+        
+        tableViewOrdenar.layer.borderColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+        tableViewOrdenar.layer.borderWidth = 1
+        tableViewOrdenar.layer.cornerRadius = 0.05 * tableViewOrdenar.bounds.size.width
 
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
@@ -91,6 +119,10 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func quitaTeclado(){
+        self.view.endEditing(true)
     }
     
     // MARK: - TableViews
@@ -367,17 +399,17 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         if ingSelect.count != 0 {
             //sacar el porcentaje de los ingredientes que hacen match a los seleccionados por cada receta
             for rec in 0..<recetas.count{
-                var ingredientes = [String]()
+                var ingredientesRec = [String]()
                 var cantIng = 0.0
                 
                 //sacar los nombres de los ingredientes que tiene esa receta
                 for ing in 0..<recetas[rec].ingredientes.count{
-                    ingredientes.append(recetas[rec].ingredientes[ing].nombre)
+                    ingredientesRec.append(recetas[rec].ingredientes[ing].nombre)
                 }
                 
                 //por cada ingrediente seleccionado por el usuario, checar si la receta en cuestion lo contiene
                 for i in 0..<ingSelect.count {
-                    if ingredientes.contains(ingSelect[i]){
+                    if ingredientesRec.contains(ingSelect[i]){
                         cantIng += 1
                     }
                 }
@@ -410,18 +442,19 @@ class ViewControllerSearch: UIViewController, UITableViewDelegate, UITableViewDa
         var rec = 0
         while rec < recetas.count{
         
-            var ingredientes = [String]()
+            var ingredientesRec = [String]()
             
             //sacar los nombres de los ingredientes que tiene esa receta
             for ing in 0..<recetas[rec].ingredientes.count{
-                ingredientes.append(recetas[rec].ingredientes[ing].nombre)
+                ingredientesRec.append(recetas[rec].ingredientes[ing].nombre)
             }
             
             //por cada ingrediente no deseado seleccionado por el usuario, checar si la receta en cuestion lo contiene
             for i in 0..<noIngSelect.count {
-                if ingredientes.contains(noIngSelect[i]){
+                if ingredientesRec.contains(noIngSelect[i]){
                     recetas.remove(at: rec)  //si contiene un ingrediente no deseado, no incluir receta
                     rec -= 1
+                    break;
                 }
             }
             rec += 1

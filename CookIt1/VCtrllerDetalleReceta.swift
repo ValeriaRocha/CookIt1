@@ -94,7 +94,11 @@ class VCtrllerDetalleReceta: UIViewController, WKUIDelegate, WKNavigationDelegat
         
         var ing = ""
         for i in 0 ..< receta.ingredientes.count{
-            ing += String(receta.ingredientes[i].cantidad) + " " + receta.ingredientes[i].unidad + " de " + receta.ingredientes[i].nombre + "\n"
+            ing += String(receta.ingredientes[i].cantidad) + " " + receta.ingredientes[i].unidad + " de " + receta.ingredientes[i].nombre
+            if receta.ingredientes[i].sugerencia != nil {
+                ing += ", Marca Sugerida: " + receta.ingredientes[i].sugerencia!
+            }
+            ing += "\n\n"
         }
         tvIngredientes.text = ing
         
