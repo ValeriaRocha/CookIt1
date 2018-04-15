@@ -27,6 +27,8 @@ class VCtrllerDetalleReceta: UIViewController, WKUIDelegate, WKNavigationDelegat
     @IBOutlet weak var lbCalorias: UILabel!
     @IBOutlet weak var lbGluten: UILabel!
     @IBOutlet weak var tvComentarios: UITextView!
+    @IBOutlet weak var viewGeneral: UIView!
+    @IBOutlet weak var viewNutricion: UIView!
     
     
     
@@ -35,9 +37,16 @@ class VCtrllerDetalleReceta: UIViewController, WKUIDelegate, WKNavigationDelegat
         
         title = receta.nombre
         
-//        tvIngredientes.layer.cornerRadius = 0.05 * tvIngredientes.bounds.size.width
-//        tvComentarios.layer.cornerRadius = 0.05 * tvComentarios.bounds.size.width
-//        tvInstrucciones.layer.cornerRadius = 0.05 * tvInstrucciones.bounds.size.width
+        tvIngredientes.layer.cornerRadius = 0.05 * tvIngredientes.bounds.size.width
+        tvComentarios.layer.cornerRadius = 0.05 * tvComentarios.bounds.size.width
+        tvInstrucciones.layer.cornerRadius = 0.05 * tvInstrucciones.bounds.size.width
+        viewGeneral.layer.cornerRadius = 0.05 * viewGeneral.bounds.size.width
+        viewNutricion.layer.cornerRadius = 0.05 * viewNutricion.bounds.size.width
+        
+        tvIngredientes.layer.borderColor = #colorLiteral(red: 0.7721944899, green: 0.8830101413, blue: 0.9413864213, alpha: 1)
+        tvInstrucciones.layer.borderColor = #colorLiteral(red: 0.7721944899, green: 0.8830101413, blue: 0.9413864213, alpha: 1)
+        tvComentarios.layer.borderColor = #colorLiteral(red: 0.7721944899, green: 0.8830101413, blue: 0.9413864213, alpha: 1)
+        
         
         let video = "https://www.youtube.com/embed/\(receta.url)"
         let myURL = URL(string: video)
